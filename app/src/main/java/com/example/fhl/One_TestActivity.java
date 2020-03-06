@@ -63,7 +63,8 @@ public class One_TestActivity extends AppCompatActivity {
     private int MILLISINFUTURE = 11*1000;
     private int COUNT_DOWN_INTERVAL = 1000;
     private CountDownTimer timer;
-    private boolean paging = false;
+    private boolean isDialog = false;
+    private boolean testPause = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +111,7 @@ public class One_TestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!checked) {
                     submit = 1;
+                    setBtnPink(1);
                     submitAnswer();
                 }
             }
@@ -119,6 +121,7 @@ public class One_TestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!checked) {
                     submit = 2;
+                    setBtnPink(2);
                     submitAnswer();
                 }
             }
@@ -128,6 +131,7 @@ public class One_TestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!checked) {
                     submit = 3;
+                    setBtnPink(3);
                     submitAnswer();
                 }
             }
@@ -137,6 +141,7 @@ public class One_TestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!checked) {
                     submit = 4;
+                    setBtnPink(4);
                     submitAnswer();
                 }
             }
@@ -152,13 +157,18 @@ public class One_TestActivity extends AppCompatActivity {
 
     public void Test(){
         if(!isFinishing()){
-        if(progress<20) {
-            nowQ = qList.get(progress);
-            printQuestion();
-            time = 11;
-            setCountDown();
-        }
-        else {showResultPopup();}
+            if(!isDialog) {
+                submit = -1;
+                if (progress < 20) {
+                    nowQ = qList.get(progress);
+                    printQuestion();
+                    time = 11;
+                    setCountDown();
+                } else {
+                    showResultPopup();
+                }
+            }
+            else {testPause = true;}
         }
     }
 
@@ -169,17 +179,16 @@ public class One_TestActivity extends AppCompatActivity {
             Correct.setVisibility(View.VISIBLE);
             Correct.bringToFront();
             correctNum++;
-            setBtnOrange(answer);
-            paging = true;
+            setBtnGreen(answer);
 
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {
                     Correct.setVisibility(View.INVISIBLE);
                     setBtnBeige(answer);
+                    setBtnBeige(submit);
                     checked = false;
                     Test();
-                    paging = false;
                 }
             }, 1500);
         }
@@ -187,34 +196,44 @@ public class One_TestActivity extends AppCompatActivity {
             System.out.println("submit:"+submit+"/answer:"+answer);
             Wrong.setVisibility(View.VISIBLE);
             Wrong.bringToFront();
-            setBtnOrange(answer);
-            paging = true;
+            setBtnGreen(answer);
 
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {
                     Wrong.setVisibility(View.INVISIBLE);
                     setBtnBeige(answer);
+                    setBtnBeige(submit);
                     checked = false;
                     Test();
-                    paging = false;
                 }
             }, 1500);
         }
-
-        submit = -1;
     }
 
-    public void setBtnOrange(int ans){
+    public void setBtnGreen(int ans){
         switch (ans){
             case 1:
-                AnswerBtn01.setBackgroundColor(getResources().getColor(R.color.transparent_orange)); break;
+                AnswerBtn01.setBackgroundColor(getResources().getColor(R.color.transparent_green)); break;
             case 2:
-                AnswerBtn02.setBackgroundColor(getResources().getColor(R.color.transparent_orange)); break;
+                AnswerBtn02.setBackgroundColor(getResources().getColor(R.color.transparent_green)); break;
             case 3:
-                AnswerBtn03.setBackgroundColor(getResources().getColor(R.color.transparent_orange)); break;
+                AnswerBtn03.setBackgroundColor(getResources().getColor(R.color.transparent_green)); break;
             case 4:
-                AnswerBtn04.setBackgroundColor(getResources().getColor(R.color.transparent_orange)); break;
+                AnswerBtn04.setBackgroundColor(getResources().getColor(R.color.transparent_green)); break;
+        }
+    }
+
+    public void setBtnPink(int ans){
+        switch (ans){
+            case 1:
+                AnswerBtn01.setBackgroundColor(getResources().getColor(R.color.transparent_pink)); break;
+            case 2:
+                AnswerBtn02.setBackgroundColor(getResources().getColor(R.color.transparent_pink)); break;
+            case 3:
+                AnswerBtn03.setBackgroundColor(getResources().getColor(R.color.transparent_pink)); break;
+            case 4:
+                AnswerBtn04.setBackgroundColor(getResources().getColor(R.color.transparent_pink)); break;
         }
     }
 
@@ -287,8 +306,10 @@ public class One_TestActivity extends AppCompatActivity {
             @Override
             public void onCancel(DialogInterface dialog) {
                 dialog.cancel();
-                if(time!=0 && !paging){resumeTimer();}
-                else {checkAnswer(); checked = true;}
+                isDialog = false;
+                if(testPause){Test();testPause = false;}
+                else if(time == 0){checkAnswer();checked = true;}
+                else {resumeTimer();}
             }
         });
 
@@ -299,6 +320,7 @@ public class One_TestActivity extends AppCompatActivity {
         params.width=1000;
         params.height=600;
         dialog.getWindow().setAttributes(params);
+        isDialog = true;
 
         //view안의 요소들과 연결
         final Button cancelBtn = (Button)view.findViewById(R.id.cancelBtn);
