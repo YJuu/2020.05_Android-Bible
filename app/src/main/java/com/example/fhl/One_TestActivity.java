@@ -6,6 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.RectF;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -32,6 +38,7 @@ import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 
 public class One_TestActivity extends AppCompatActivity {
+    final float ANGLE_PER_TIME = (float)360/110;
     private HashMap<String, ArrayList<String>> bibleMap = new HashMap<>();
     private ArrayList<String> verse = new ArrayList<>();
     private boolean[] is_long = new boolean[20];
@@ -42,13 +49,17 @@ public class One_TestActivity extends AppCompatActivity {
     private TextView PhraseTxt;
     private TextView QuestionTxt;
     private TextView TimeTxt;
-    private ProgressBar TimerBar;
     private Button AnswerBtn01;
     private Button AnswerBtn02;
     private Button AnswerBtn03;
     private Button AnswerBtn04;
     private ImageView Correct;
     private ImageView Wrong;
+    private ImageView TimerBar;
+
+    private Canvas canvas;
+    private RectF rectF;
+    private Paint paint;
 
     private ArrayList<Integer> qList =  new ArrayList<>();
     private ArrayList<Integer> numList = new ArrayList<>();
@@ -59,9 +70,9 @@ public class One_TestActivity extends AppCompatActivity {
     private int correctNum = 0;
     private boolean checked = false;
     private int time = 11;
-    int timeProgress = 0;
+    private int millis = 0;
     private int MILLISINFUTURE = 11*1000;
-    private int COUNT_DOWN_INTERVAL = 1000;
+    private int COUNT_DOWN_INTERVAL = 100;
     private CountDownTimer timer;
     private boolean isDialog = false;
     private boolean testPause = false;
@@ -82,18 +93,19 @@ public class One_TestActivity extends AppCompatActivity {
         PhraseTxt = (TextView)findViewById(R.id.phrase);
         QuestionTxt = (TextView)findViewById(R.id.question);
         TimeTxt = (TextView)findViewById(R.id.timeTxt);
-        TimerBar = (ProgressBar)findViewById(R.id.timer);
         AnswerBtn01 = (Button)findViewById(R.id.a01);
         AnswerBtn02 = (Button)findViewById(R.id.a02);
         AnswerBtn03 = (Button)findViewById(R.id.a03);
         AnswerBtn04 = (Button)findViewById(R.id.a04);
         Correct = (ImageView)findViewById(R.id.correct);
         Wrong = (ImageView)findViewById(R.id.wrong);
+        TimerBar = (ImageView)findViewById(R.id.timer);
 
         Correct.setVisibility(View.INVISIBLE);
         Wrong.setVisibility(View.INVISIBLE);
 
         setNumList();
+        setTimerBar();
         qList = randomNum(20);
         Test();
         setListener();
@@ -163,6 +175,8 @@ public class One_TestActivity extends AppCompatActivity {
                     nowQ = qList.get(progress);
                     printQuestion();
                     time = 11;
+                    millis = time*10;
+                    canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
                     setCountDown();
                 } else {
                     showResultPopup();
@@ -173,7 +187,6 @@ public class One_TestActivity extends AppCompatActivity {
     }
 
     public void checkAnswer(){
-
         if(submit == answer){
             System.out.println("submit:"+submit+"/answer:"+answer);
             Correct.setVisibility(View.VISIBLE);
@@ -254,23 +267,38 @@ public class One_TestActivity extends AppCompatActivity {
         timer = new CountDownTimer(MILLISINFUTURE, COUNT_DOWN_INTERVAL) {
             @Override
             public void onTick(long millisUntilFinished) {
-                time--;
+                millis--;
+                time = millis/10;
                 String timeTxt = Integer.toString(time);
                 System.out.println("countDown");
                 TimeTxt.setText(timeTxt);
+                float angle = 360 - millis * ANGLE_PER_TIME;
+                canvas.drawArc(rectF, -90, angle, false, paint);
             }
             @Override
             public void onFinish() {
                 checkAnswer();
                 checked = true;
+                canvas.drawArc(rectF, -90, 360, false, paint);
             }
         };
         timer.start();
     }
 
     public void setTimerBar(){
+        Bitmap bitmap = Bitmap.createBitmap(500,500,Bitmap.Config.ARGB_8888);
 
-        timeProgress = time/10*100;
+        canvas = new Canvas(bitmap);
+        canvas.drawColor(getResources().getColor(R.color.transparent));
+
+        TimerBar.setImageBitmap(bitmap);
+
+        paint = new Paint();
+        paint.setColor(getResources().getColor(R.color.hotpink));
+        paint.setStrokeWidth(40);
+        rectF = new RectF();
+        rectF.set(50,50,450,450);
+        paint.setStyle(Paint.Style.STROKE);
     }
 
     public void resumeTimer(){
@@ -279,16 +307,20 @@ public class One_TestActivity extends AppCompatActivity {
         timer = new CountDownTimer(resumeTime, COUNT_DOWN_INTERVAL) {
             @Override
             public void onTick(long millisUntilFinished) {
-                time--;
+                millis--;
+                time = millis/10;
                 String timeTxt = Integer.toString(time);
                 System.out.println("resume");
                 TimeTxt.setText(timeTxt);
+                float angle = 360 - millis * ANGLE_PER_TIME;
+                canvas.drawArc(rectF, -90, angle, false, paint);
             }
 
             @Override
             public void onFinish() {
                 checkAnswer();
                 checked = true;
+                canvas.drawArc(rectF, -90, 360, false, paint);
             }
         };
         timer.start();
