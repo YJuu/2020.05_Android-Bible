@@ -11,7 +11,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="?attr/actionModeCloseDrawable"
-        android:backgroundTint="@color/babypink"
+        android:backgroundTint="@color/pink"
         android:stateListAnimator="@null"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"

@@ -2,6 +2,7 @@
 <resources>
     <color name="skyblue">#DCF4F5</color>
     <color name="blue">#ACE0DD</color>
+    <color name="transparent_green">#999CD15D</color>
     <color name="orange">#FFA547</color>
     <color name="transparent_orange">#99FFA547</color>
     <color name="beige">#FFF0D6</color>
@@ -11,7 +12,7 @@
     <color name="transparent_yellow">#99FFE047</color>
     <color name="hotpink">#FA6690</color>
     <color name="pink">#FEC0CF</color>
-    <color name="babypink">#FFC8D0</color>
+    <color name="transparent_pink">#99FFC8D0</color>
     <color name="brown">#664436</color>
     <color name="darkbrown">#312116</color>
     <color name="babybrown">#A77E6D</color>
