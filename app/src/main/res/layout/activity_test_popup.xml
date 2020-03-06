@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <TextView
+        android:id="@+id/testQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/titlemedium"
+        android:text="난이도를 골라주세요"
+        android:textColor="@color/brown"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/exitBtn"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:background="@android:drawable/ic_delete"
+        android:backgroundTint="@color/hotpink"
+        android:stateListAnimator="@null"
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toEndOf="@id/testQ"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/starRadio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:checkedButton="@id/one_star"
+        app:layout_constraintTop_toBottomOf="@id/testQ"
+        app:layout_constraintStart_toStartOf="@id/testQ"
+        app:layout_constraintEnd_toEndOf="@id/testQ">
+
+        <RadioButton
+            android:id="@+id/one_star"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:stateListAnimator="@null"
+            android:text="★"
+            android:fontFamily="@font/titlemedium"
+            android:textColor="@color/yellow"
+            android:textSize="30dp"
+            android:buttonTint="@color/orange"
+            app:layout_constraintEnd_toEndOf="@+id/testQ"
+            app:layout_constraintStart_toStartOf="@id/testQ"
+            app:layout_constraintTop_toBottomOf="@id/testQ" />
+
+        <RadioButton
+            android:id="@+id/two_star"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/transparent"
+            android:stateListAnimator="@null"
+            android:text="★★"
+            android:fontFamily="@font/titlemedium"
+            android:textColor="@color/yellow"
+            android:textSize="30dp"
+            android:buttonTint="@color/orange"
+            app:layout_constraintEnd_toEndOf="@+id/testQ"
+            app:layout_constraintStart_toStartOf="@id/testQ"
+            app:layout_constraintTop_toBottomOf="@id/one_star" />
+
+        <RadioButton
+            android:id="@+id/three_star"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/transparent"
+            android:stateListAnimator="@null"
+            android:fontFamily="@font/titlemedium"
+            android:text="★★★"
+            android:textColor="@color/yellow"
+            android:textSize="30dp"
+            android:buttonTint="@color/orange"
+            app:layout_constraintEnd_toEndOf="@+id/testQ"
+            app:layout_constraintStart_toStartOf="@id/testQ"
+            app:layout_constraintTop_toBottomOf="@id/two_star" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/startBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="START"
+        android:textSize="30dp"
+        android:fontFamily="@font/titlemedium"
+        android:textColor="@color/babybrown"
+        android:background="@color/transparent"
+        android:stateListAnimator="@null"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="@id/testQ"
+        app:layout_constraintEnd_toEndOf="@+id/testQ"
+        app:layout_constraintTop_toBottomOf="@id/starRadio"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

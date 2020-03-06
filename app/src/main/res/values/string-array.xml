@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="verse">
+        <item>고린도후서 5:17</item>
+        <item>갈라디아서 2:20</item>
+        <item>로마서 12:1</item>
+        <item>디모데후서 3:16</item>
+        <item>빌립보서 4:6,7</item>
+        <item>로마서 1:16</item>
+        <item>이사야 53:6</item>
+        <item>로마서 6:23</item>
+        <item>로마서 5:8</item>
+        <item>에베소서 2:8,9</item>
+        <item>요한계시록 3:20</item>
+        <item>요한복음 5:24</item>
+        <item>이사야 41:10</item>
+        <item>민수기 23:19</item>
+        <item>로마서 8:32</item>
+        <item>히브리서 2:18</item>
+        <item>시편 119:9,11</item>
+        <item>누가복음 9;23</item>
+        <item>로마서 12:2</item>
+        <item>히브리서 12:3</item>
+    </string-array>
+</resources>

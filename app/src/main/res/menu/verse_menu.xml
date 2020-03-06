@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/v01"
+        android:title="1. 고린도후서 5:17"/>
+    <item
+        android:id="@+id/v02"
+        android:title="2. 갈라디아서 2:20" />
+    <item
+        android:id="@+id/v03"
+        android:title="3. 로마서 12:1" />
+    <item
+        android:id="@+id/v04"
+        android:title="4. 디모데후서 3:16" />
+    <item
+        android:id="@+id/v05"
+        android:title="5. 빌립보서 4:6,7" />
+    <item
+        android:id="@+id/v06"
+        android:title="6. 로마서 1:16" />
+    <item
+        android:id="@+id/v07"
+        android:title="7. 이사야 53:6" />
+    <item
+        android:id="@+id/v08"
+        android:title="8. 로마서 6:23" />
+    <item
+        android:id="@+id/v09"
+        android:title="9. 로마서 5:8" />
+    <item
+        android:id="@+id/v10"
+        android:title="10 .에베소서 2:8,9" />
+    <item
+        android:id="@+id/v11"
+        android:title="11. 요한계시록 3:20" />
+    <item
+        android:id="@+id/v12"
+        android:title="12. 요한복음 5:24" />
+    <item
+        android:id="@+id/v13"
+        android:title="13. 이사야 41:10" />
+    <item
+        android:id="@+id/v14"
+        android:title="14. 민수기 23:19" />
+    <item
+        android:id="@+id/v15"
+        android:title="15. 로마서 8:32" />
+    <item
+        android:id="@+id/v16"
+        android:title="16. 히브리서 2:18" />
+    <item
+        android:id="@+id/v17"
+        android:title="17. 시편 119:9,11" />
+    <item
+        android:id="@+id/v18"
+        android:title="18. 누가복음 9:23" />
+    <item
+        android:id="@+id/v19"
+        android:title="19. 로마서 12:2" />
+    <item
+        android:id="@+id/v20"
+        android:title="20. 히브리서 12:3" />
+
+</menu>
