@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/phraseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&quot;그런즉 누구든지\n그리스도 안에 있으면\n새로운 피조물이라\n이전 것은 지나갔으니\n보라 새것이 되었도다&quot;"
+        android:textColor="@color/darkbrown"
+        android:textSize="30dp"
+        android:fontFamily="@font/batangbold"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:lineSpacingExtra="15dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:ems="20"
+        app:layout_constraintStart_toStartOf ="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        />
+
+    <TextView
+        android:id="@+id/verseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:fontFamily="@font/batangbold"
+        android:text="고린도후서 5:17"
+        android:textAlignment="center"
+        android:textColor="@color/brown"
+        android:textSize="25dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="@id/phraseText"
+        app:layout_constraintEnd_toEndOf="@id/phraseText"
+        app:layout_constraintTop_toBottomOf="@id/phraseText"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

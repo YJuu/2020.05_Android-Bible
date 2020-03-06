@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/Dday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="150dp"
+        android:ems="5"
+        android:fontFamily="@font/titlemedium"
+        android:maxLines="1"
+        android:text="@string/d_day"
+        android:textColor="@color/orange"
+        android:textSize="40dp"
+        app:layout_constraintEnd_toEndOf="@id/phrase"
+        app:layout_constraintStart_toStartOf="@id/phrase"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <TextView
+        android:id="@+id/phrase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&quot;그런즉 누구든지\n그리스도 안에 있으면\n새로운 피조물이라\n이전 것은 지나갔으니\n보라 새것이 되었도다&quot;"
+        android:textColor="@color/brown"
+        android:textSize="30dp"
+        android:fontFamily="@font/batangbold"
+        android:textAlignment="center"
+        android:lineSpacingExtra="15dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:ems="20"
+        app:layout_constraintStart_toStartOf ="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.45"
+        />
+
+    <TextView
+        android:id="@+id/verse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:fontFamily="@font/batangregular"
+        android:text="-고린도후서 5:17"
+        android:textAlignment="textEnd"
+        android:textColor="@color/babybrown"
+        android:textSize="17dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="@id/phrase"
+        app:layout_constraintTop_toBottomOf="@id/phrase"
+        />
+
+    <Button
+        android:id="@+id/viewbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/titlebold"
+        android:text="@string/viewbtn"
+        android:textAlignment="center"
+        android:textColor="@color/babybrown"
+        android:textSize="35dp"
+        android:background="@color/transparent"
+        android:stateListAnimator="@null"
+        app:layout_constraintStart_toStartOf="@id/phrase"
+        app:layout_constraintEnd_toStartOf="@id/testbtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.85"
+        />
+
+    <Button
+        android:id="@+id/testbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/testbtn"
+        android:textColor="@color/babybrown"
+        android:textSize="35dp"
+        android:fontFamily="@font/titlebold"
+        android:textAlignment="center"
+        android:background="@color/transparent"
+        android:stateListAnimator="@null"
+        app:layout_constraintStart_toEndOf="@id/viewbtn"
+        app:layout_constraintEnd_toEndOf= "@id/phrase"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.85"
+    />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

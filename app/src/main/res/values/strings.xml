@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FHL</string>
+    <string name="app_name_new">성경암송</string>
+    <string name="title">TITLE</string>
+    <string name="testbtn">시험 보기</string>
+    <string name="d_day">D-day</string>
+    <string name="viewbtn">말씀 보기</string>
+
+</resources>
