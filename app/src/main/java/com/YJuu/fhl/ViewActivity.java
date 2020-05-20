@@ -2,11 +2,14 @@ package com.YJuu.fhl;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -45,6 +48,7 @@ public class ViewActivity extends AppCompatActivity {
     private ArrayList<String> verse = new ArrayList<>();
     private boolean[] is_long = new boolean[20];
     private boolean[] complete = new boolean[20];
+    private int last = 1;
     private PhraseViewPagerAdapter pagerAdapter;
     private TextView PageTxt;
     private ImageButton PreBtn;
@@ -60,8 +64,6 @@ public class ViewActivity extends AppCompatActivity {
     private int preState = 0;
     private boolean jumpCheck = true;
     private boolean jump = true;
-    private int nowItem = _01;
-    private int nowMenu = _01;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +87,7 @@ public class ViewActivity extends AppCompatActivity {
         is_long = data.getIs_long();
         complete = data.getComplete();
         jumpCheck = data.getJumpCheck();
+        last = data.getLast();
 
         if (jumpCheck) {
             JumpCheck.setChecked(true);
@@ -154,7 +157,7 @@ public class ViewActivity extends AppCompatActivity {
         MenuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showMenu(v);
+                showMenu();
             }
         });
 
@@ -237,83 +240,31 @@ public class ViewActivity extends AppCompatActivity {
         goMain();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent i) {
-        if (requestCode == 1) {
-            switch (resultCode) {
-                case 0:
-                    break;
-                case 1:
-                    now = 1;
-                    break;
-                case 2:
-                    now = 2;
-                    break;
-                case 3:
-                    now = 3;
-                    break;
-                case 4:
-                    now = 4;
-                    break;
-                case 5:
-                    now = 5;
-                    break;
-                case 6:
-                    now = 6;
-                    break;
-                case 7:
-                    now = 7;
-                    break;
-                case 8:
-                    now = 8;
-                    break;
-                case 9:
-                    now = 9;
-                    break;
-                case 10:
-                    now = 10;
-                    break;
-                case 11:
-                    now = 11;
-                    break;
-                case 12:
-                    now = 12;
-                    break;
-                case 13:
-                    now = 13;
-                    break;
-                case 14:
-                    now = 14;
-                    break;
-                case 15:
-                    now = 15;
-                    break;
-                case 16:
-                    now = 16;
-                    break;
-                case 17:
-                    now = 17;
-                    break;
-                case 18:
-                    now = 18;
-                    break;
-                case 19:
-                    now = 19;
-                    break;
-                case 20:
-                    now = 20;
-                    break;
+    private void showMenu() {
+        MenuDialog menu = new MenuDialog(ViewActivity.this, now, new MenuDialog.MenuListener() {
+            @Override
+            public void selectMenu(int data) {
+                now = data;
+                jump = false;
+                PhraseView.setCurrentItem(now - 1, false);
+                Log.d("resultcode",Integer.toString(data));
             }
-            jump = false;
-            PhraseView.setCurrentItem(now - 1, false);
-            Log.d("resultcode",Integer.toString(resultCode));
-        }
-    }
+        });
 
-    private void showMenu(View button) {
-        Intent intent = new Intent(this, VerseMenuPopupActivity.class);
-        intent.putExtra("now",now);
-        startActivityForResult(intent, 1);
+        //휴대폰의 크기 받아오기
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        //우상단에 위치
+        WindowManager.LayoutParams params = menu.getWindow().getAttributes();
+        params.x = size.x;
+        params.y = -size.y;
+        menu.getWindow().setAttributes(params);
+
+        //배경 투명
+        menu.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        menu.show();
     }
 
     private void setCompleteBtn() {
@@ -341,7 +292,9 @@ public class ViewActivity extends AppCompatActivity {
         data.setComplete(complete);
         data.setJumpCheck(jumpCheck);
 
-
+        last = now;
+        data.setLast(last);
+        
         //현재 화면과 전환할 화면 설정
         Intent intent = new Intent(ViewActivity.this, MainActivity.class);
         //화면전환시 bibleMap과 verse를 Data를 함께 전달
@@ -358,6 +311,8 @@ public class ViewActivity extends AppCompatActivity {
         int background_yellow = Color.parseColor("#FFE047");
         int background_transparent_yellow = Color.parseColor("#99FFE047");
         String pageTxt = "";
+
+        now = last;
 
         pageTxt = now + "/20";
         PageTxt.setText(pageTxt);

@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean[] is_long = new boolean[20];
     private boolean[] complete = new boolean[20];
     private boolean jumpCheck = true;
+    private int r = 1;
+    private int last = 1;
 
     private TextView DdayTxt;
     private TextView PhraseTxt;
@@ -57,11 +59,27 @@ public class MainActivity extends AppCompatActivity {
         bibleMap = data.getBibleMap();
         verse = data.getVerse();
         is_long = data.getIs_long();
+        last = data.getLast();
 
         //Dday표시하는 함수
         updateDday(calculate_Dday());
         //랜덤한 구절을 표시하는 함수
         printRandomPhrase();
+
+        PhraseTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                last = r;
+                data.setLast(last);
+                //현재 화면과 전환할 화면 설정
+                Intent intent = new Intent(MainActivity.this,ViewActivity.class);
+                //화면전환시 bibleMap과 verse를 Data를 함께 전달
+                intent.putExtra("data", (Serializable) data);
+                //화면전환
+                startActivity(intent);
+                finish();
+            }
+        });
 
         ShareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,8 +177,8 @@ public class MainActivity extends AppCompatActivity {
         mDbOpenHelper.createDataBase();
         mDbOpenHelper.open();
 
-        if(jumpCheck){mDbOpenHelper.update_settings(0);}
-        else {mDbOpenHelper.update_settings(1);}
+        if(jumpCheck){mDbOpenHelper.update_settings(0, last);}
+        else {mDbOpenHelper.update_settings(1, last);}
 
         for(int i=0;i<20;i++){
             String com = boolToString(complete[i]);
@@ -193,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
         //화면에 출력할 텍스트
         String printTxt = "";
         //1~20랜덤 선택
-        int r = (int)(Math.random()* 20);
+        r = (int)(Math.random()* 20);
         //개행을 추가하며 텍스트 만들기
 
         for(int i=0;i<bibleMap.get(verse.get(r)).size();i++){
