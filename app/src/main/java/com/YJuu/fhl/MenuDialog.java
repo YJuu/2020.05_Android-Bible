@@ -35,18 +35,17 @@ public class MenuDialog extends Dialog {
     private ScrollView menu;
 
     private int selected = 1;
-    private MenuListener menuListener;
-    private OnDismissListener onDismissListener = null;
+    //private MenuListener menuListener;
     private Context context;
 
     public interface MenuListener{
         void selectMenu(int data);
     }
     
-    public MenuDialog(Context context, MenuListener menuListenr){
+    public MenuDialog(Context context, MenuListener menuListener){
         super(context);
         this.context = context;
-        this.menuListener = menuListenr;
+        final MenuListener ML = menuListener;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setBackgroundDrawable(new ColorDrawable(context.getResources().getColor(R.color.transparent)));
         setContentView(R.layout.view_menu);
@@ -73,12 +72,14 @@ public class MenuDialog extends Dialog {
         v20 = (Button)findViewById(R.id.v20);
         menu = (ScrollView)findViewById(R.id.MenuScroll);
 
+        setOrange(selected);
 
         v01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setBrown(selected);
-                menuListener.selectMenu(1);
+                selected = 1;
+                ML.selectMenu(1);
                 dismiss();
             }
         });
@@ -87,7 +88,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 2;
-                menuListener.selectMenu(2);
+                ML.selectMenu(2);
                 dismiss();
             }
         });
@@ -96,7 +97,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 3;
-                menuListener.selectMenu(3);
+                ML.selectMenu(3);
                 dismiss();
             }
         });
@@ -105,7 +106,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 4;
-                menuListener.selectMenu(4);
+                ML.selectMenu(4);
                 dismiss();
             }
         });
@@ -114,7 +115,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 5;
-                menuListener.selectMenu(5);
+                ML.selectMenu(5);
                 dismiss();
             }
         });
@@ -123,7 +124,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 6;
-                menuListener.selectMenu(6);
+                ML.selectMenu(6);
                 dismiss();
             }
         });
@@ -132,7 +133,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 7;
-                menuListener.selectMenu(7);
+                ML.selectMenu(7);
                 dismiss();
             }
         });
@@ -141,7 +142,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 8;
-                menuListener.selectMenu(8);
+                ML.selectMenu(8);
                 dismiss();
             }
         });
@@ -150,7 +151,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 9;
-                menuListener.selectMenu(9);
+                ML.selectMenu(9);
                 dismiss();
             }
         });
@@ -159,7 +160,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 10;
-                menuListener.selectMenu(10);
+                ML.selectMenu(10);
                 dismiss();
             }
         });
@@ -168,7 +169,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 11;
-                menuListener.selectMenu(11);
+                ML.selectMenu(11);
                 dismiss();
             }
         });
@@ -177,7 +178,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 12;
-                menuListener.selectMenu(12);
+                ML.selectMenu(12);
                 dismiss();
             }
         });
@@ -186,7 +187,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 13;
-                menuListener.selectMenu(13);
+                ML.selectMenu(13);
                 dismiss();
             }
         });
@@ -195,7 +196,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 14;
-                menuListener.selectMenu(14);
+                ML.selectMenu(14);
                 dismiss();
             }
         });
@@ -204,7 +205,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 15;
-                menuListener.selectMenu(15);
+                ML.selectMenu(15);
                 dismiss();
             }
         });
@@ -213,7 +214,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 16;
-                menuListener.selectMenu(16);
+                ML.selectMenu(16);
                 dismiss();
             }
         });
@@ -222,7 +223,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 17;
-                menuListener.selectMenu(17);
+                ML.selectMenu(17);
                 dismiss();
             }
         });
@@ -231,7 +232,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 18;
-                menuListener.selectMenu(18);
+                ML.selectMenu(18);
                 dismiss();
             }
         });
@@ -240,7 +241,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 19;
-                menuListener.selectMenu(19);
+                ML.selectMenu(19);
                 dismiss();
             }
         });
@@ -249,7 +250,7 @@ public class MenuDialog extends Dialog {
             public void onClick(View v) {
                 setBrown(selected);
                 selected = 20;
-                menuListener.selectMenu(20);
+                ML.selectMenu(20);
                 dismiss();
             }
         });
