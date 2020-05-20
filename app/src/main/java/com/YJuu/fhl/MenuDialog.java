@@ -42,10 +42,11 @@ public class MenuDialog extends Dialog {
         void selectMenu(int data);
     }
     
-    public MenuDialog(Context context, MenuListener menuListener){
+    public MenuDialog(Context context, int now, MenuListener menuListener){
         super(context);
         this.context = context;
         final MenuListener ML = menuListener;
+        selected = now;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setBackgroundDrawable(new ColorDrawable(context.getResources().getColor(R.color.transparent)));
         setContentView(R.layout.view_menu);
