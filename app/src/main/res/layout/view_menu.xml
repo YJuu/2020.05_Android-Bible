@@ -13,7 +13,7 @@
         android:layout_width="170dp"
         android:layout_height="400dp"
         android:elevation="10dp"
-        android:background="@color/white"
+        android:background="@drawable/scroll_outline"
         android:scrollbarSize="4dp"
         android:scrollbarThumbVertical="@color/yellow"
         app:layout_constraintEnd_toEndOf="parent"

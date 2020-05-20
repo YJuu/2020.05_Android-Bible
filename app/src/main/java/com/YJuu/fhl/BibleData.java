@@ -13,6 +13,7 @@ public class BibleData implements Serializable {
     private boolean[] complete = new boolean[20];
     private boolean[] is_long = new boolean[20];
     private boolean jumpCheck = true;
+    private int last = 1;
 
     public HashMap<String, ArrayList<String>> getBibleMap() {
         return bibleMap;
@@ -34,6 +35,8 @@ public class BibleData implements Serializable {
         return jumpCheck;
     }
 
+    public int getLast(){return last;}
+
     public void setBibleMap(HashMap<String, ArrayList<String>> bibleMap){this.bibleMap = bibleMap;}
 
     public void setVerse(ArrayList<String> verse){
@@ -45,4 +48,6 @@ public class BibleData implements Serializable {
     public void setIs_long(boolean[] is_long){this.is_long=is_long;}
 
     public void setJumpCheck(boolean jumpCheck){this.jumpCheck=jumpCheck;}
+
+    public void setLast(int last){this.last = last;}
 }
