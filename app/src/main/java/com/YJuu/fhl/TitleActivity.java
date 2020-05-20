@@ -19,7 +19,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static com.kakao.util.helper.Utility.getPackageInfo;
+//import static com.kakao.util.helper.Utility.getPackageInfo;
 
 public class TitleActivity extends AppCompatActivity {
     //key:장절, value:구절인 HashMap
@@ -29,6 +29,7 @@ public class TitleActivity extends AppCompatActivity {
     private boolean[] complete = new boolean[20];
     private boolean[] is_long = new boolean[20];
     private boolean jumpCheck = true;
+    private int last = 1;
     private BibleData data = new BibleData();
 
     @Override
@@ -36,7 +37,7 @@ public class TitleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //activity_title.xml과 연결
         setContentView(R.layout.activity_title);
-        getKeyHash(TitleActivity.this);
+        //getKeyHash(TitleActivity.this);
 
         //DB로부터 Data를 읽어와 bibleMap과 verse에 저장하는 함수 호출
         setData();
@@ -46,6 +47,7 @@ public class TitleActivity extends AppCompatActivity {
         data.setIs_long(is_long);
         data.setComplete(complete);
         data.setJumpCheck(jumpCheck);
+        data.setLast(last);
 
         Handler hand = new Handler();
         //타이틀 화면 표시 2초후 Main화면으로 넘어가는 함수
@@ -89,6 +91,7 @@ public class TitleActivity extends AppCompatActivity {
 
         if(settings_Cursor.getInt(settings_Cursor.getColumnIndex("jump_check")) == 0){jumpCheck = true;}
         else {jumpCheck = false;}
+        last = settings_Cursor.getInt(settings_Cursor.getColumnIndex("last"));
 
         while(bible_Cursor.moveToNext()){
             int tempIndex;
@@ -127,6 +130,7 @@ public class TitleActivity extends AppCompatActivity {
         }
     }
 
+    /*
     public static String getKeyHash(final Context context) {
         PackageInfo packageInfo = getPackageInfo(context, PackageManager.GET_SIGNATURES);
         if (packageInfo == null)
@@ -144,4 +148,6 @@ public class TitleActivity extends AppCompatActivity {
         }
         return null;
     }
+
+     */
 }

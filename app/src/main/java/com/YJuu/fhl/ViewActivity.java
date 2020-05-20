@@ -48,6 +48,7 @@ public class ViewActivity extends AppCompatActivity {
     private ArrayList<String> verse = new ArrayList<>();
     private boolean[] is_long = new boolean[20];
     private boolean[] complete = new boolean[20];
+    private int last = 1;
     private PhraseViewPagerAdapter pagerAdapter;
     private TextView PageTxt;
     private ImageButton PreBtn;
@@ -63,8 +64,6 @@ public class ViewActivity extends AppCompatActivity {
     private int preState = 0;
     private boolean jumpCheck = true;
     private boolean jump = true;
-    private int nowItem = _01;
-    private int nowMenu = _01;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +87,7 @@ public class ViewActivity extends AppCompatActivity {
         is_long = data.getIs_long();
         complete = data.getComplete();
         jumpCheck = data.getJumpCheck();
+        last = data.getLast();
 
         if (jumpCheck) {
             JumpCheck.setChecked(true);
@@ -292,7 +292,9 @@ public class ViewActivity extends AppCompatActivity {
         data.setComplete(complete);
         data.setJumpCheck(jumpCheck);
 
-
+        last = now;
+        data.setLast(last);
+        
         //현재 화면과 전환할 화면 설정
         Intent intent = new Intent(ViewActivity.this, MainActivity.class);
         //화면전환시 bibleMap과 verse를 Data를 함께 전달
@@ -309,6 +311,8 @@ public class ViewActivity extends AppCompatActivity {
         int background_yellow = Color.parseColor("#FFE047");
         int background_transparent_yellow = Color.parseColor("#99FFE047");
         String pageTxt = "";
+
+        now = last;
 
         pageTxt = now + "/20";
         PageTxt.setText(pageTxt);

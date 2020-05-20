@@ -81,12 +81,13 @@ public MyDBHandler open() throws SQLException{
         mDB.update("bibleTable",value, "verse=?",new String[]{verse});
     }
 
-    public void update_settings(int jumpCheck){
+    public void update_settings(int jumpCheck, int last){
         Log.d(TAG,"update");
         mDB = mHelper.getWritableDatabase();
 
         ContentValues value = new ContentValues();
         value.put("jump_check", jumpCheck);
+        value.put("last", last);
         mDB.update("settings",value, "_id=1",null);
     }
 
