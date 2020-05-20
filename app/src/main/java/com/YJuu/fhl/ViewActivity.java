@@ -2,11 +2,14 @@ package com.YJuu.fhl;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -154,7 +157,7 @@ public class ViewActivity extends AppCompatActivity {
         MenuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showMenu(v);
+                showMenu();
             }
         });
 
@@ -237,85 +240,8 @@ public class ViewActivity extends AppCompatActivity {
         goMain();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent i) {
-        if (requestCode == 1) {
-            switch (resultCode) {
-                case 0:
-                    break;
-                case 1:
-                    now = 1;
-                    break;
-                case 2:
-                    now = 2;
-                    break;
-                case 3:
-                    now = 3;
-                    break;
-                case 4:
-                    now = 4;
-                    break;
-                case 5:
-                    now = 5;
-                    break;
-                case 6:
-                    now = 6;
-                    break;
-                case 7:
-                    now = 7;
-                    break;
-                case 8:
-                    now = 8;
-                    break;
-                case 9:
-                    now = 9;
-                    break;
-                case 10:
-                    now = 10;
-                    break;
-                case 11:
-                    now = 11;
-                    break;
-                case 12:
-                    now = 12;
-                    break;
-                case 13:
-                    now = 13;
-                    break;
-                case 14:
-                    now = 14;
-                    break;
-                case 15:
-                    now = 15;
-                    break;
-                case 16:
-                    now = 16;
-                    break;
-                case 17:
-                    now = 17;
-                    break;
-                case 18:
-                    now = 18;
-                    break;
-                case 19:
-                    now = 19;
-                    break;
-                case 20:
-                    now = 20;
-                    break;
-            }
-            jump = false;
-            PhraseView.setCurrentItem(now - 1, false);
-            Log.d("resultcode",Integer.toString(resultCode));
-        }
-    }
-
-    private void showMenu(View button) {
-        Intent intent = new Intent(this, VerseMenuPopupActivity.class);
-        intent.putExtra("now",now);
-        startActivityForResult(intent, 1);
-
-        MenuDialog menu = new MenuDialog(ViewActivity.this, new MenuDialog.MenuListener() {
+    private void showMenu() {
+        MenuDialog menu = new MenuDialog(ViewActivity.this, now, new MenuDialog.MenuListener() {
             @Override
             public void selectMenu(int data) {
                 now = data;
@@ -324,6 +250,21 @@ public class ViewActivity extends AppCompatActivity {
                 Log.d("resultcode",Integer.toString(data));
             }
         });
+
+        //휴대폰의 크기 받아오기
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        //우상단에 위치
+        WindowManager.LayoutParams params = menu.getWindow().getAttributes();
+        params.x = size.x;
+        params.y = -size.y;
+        menu.getWindow().setAttributes(params);
+
+        //배경 투명
+        menu.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        menu.show();
     }
 
     private void setCompleteBtn() {
