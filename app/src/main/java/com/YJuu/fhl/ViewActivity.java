@@ -314,6 +314,16 @@ public class ViewActivity extends AppCompatActivity {
         Intent intent = new Intent(this, VerseMenuPopupActivity.class);
         intent.putExtra("now",now);
         startActivityForResult(intent, 1);
+
+        MenuDialog menu = new MenuDialog(ViewActivity.this, new MenuDialog.MenuListener() {
+            @Override
+            public void selectMenu(int data) {
+                now = data;
+                jump = false;
+                PhraseView.setCurrentItem(now - 1, false);
+                Log.d("resultcode",Integer.toString(data));
+            }
+        });
     }
 
     private void setCompleteBtn() {

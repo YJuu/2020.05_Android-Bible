@@ -74,6 +74,7 @@ public class VerseMenuPopupActivity extends Activity {
             @Override
             public void onClick(View v) {
                 setBrown(selected);
+                selected = 1;
                 Intent intent = new Intent();
                 setResult(1, intent);
                 finish();
