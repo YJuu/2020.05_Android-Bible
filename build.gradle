@@ -16,9 +16,9 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
-        jcenter()
-        
+     google()
+     jcenter()
+     maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
     }
 }
 

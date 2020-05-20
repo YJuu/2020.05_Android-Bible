@@ -1,4 +1,5 @@
 <resources>
+    <string name="kakao_app_key">e70bfee5c55e2e5d08947eae3c5e1546</string>
     <string name="app_name">FHL</string>
     <string name="app_name_new">성경암송</string>
     <string name="title">TITLE</string>

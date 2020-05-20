@@ -1,6 +1,5 @@
-package com.example.fhl;
+package com.YJuu.fhl;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
@@ -12,38 +11,31 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.RectF;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.os.Message;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.Delayed;
-import java.util.concurrent.TimeUnit;
 
 public class One_TestActivity extends AppCompatActivity {
-    final float ANGLE_PER_TIME = (float)360/110;
+    final float ANGLE_PER_TIME = (float)360/100;
+
+    private BibleData  data = new BibleData();
     private HashMap<String, ArrayList<String>> bibleMap = new HashMap<>();
     private ArrayList<String> verse = new ArrayList<>();
     private boolean[] is_long = new boolean[20];
-    private boolean[] complete = new boolean[20];
-    private boolean jumpCheck = true;
 
     private ImageButton BackBtn;
     private TextView PhraseTxt;
@@ -69,9 +61,9 @@ public class One_TestActivity extends AppCompatActivity {
     private int progress = 0;
     private int correctNum = 0;
     private boolean checked = false;
-    private int time = 11;
+    private int time = 10;
     private int millis = 0;
-    private int MILLISINFUTURE = 11*1000;
+    private int MILLISINFUTURE = 10*1000;
     private int COUNT_DOWN_INTERVAL = 100;
     private CountDownTimer timer;
     private boolean isDialog = false;
@@ -83,11 +75,11 @@ public class One_TestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_one__test);
 
         Intent intent = getIntent();
-        bibleMap = (HashMap<String, ArrayList<String>>) intent.getExtras().getSerializable("bibleMap");
-        verse = intent.getExtras().getStringArrayList("verse");
-        is_long = intent.getBooleanArrayExtra("is_long");
-        complete = intent.getBooleanArrayExtra("complete");
-        jumpCheck = intent.getBooleanExtra("jumpCheck",true);
+
+        data = (BibleData) intent.getSerializableExtra("data");
+        bibleMap = data.getBibleMap();
+        verse = data.getVerse();
+        is_long = data.getIs_long();
 
         BackBtn = (ImageButton)findViewById(R.id.backBtn);
         PhraseTxt = (TextView)findViewById(R.id.phrase);
@@ -109,6 +101,24 @@ public class One_TestActivity extends AppCompatActivity {
         qList = randomNum(20);
         Test();
         setListener();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent i) {
+        Intent intent;
+        if(requestCode == 0){
+            if(resultCode == 0) {goMain();}
+            else if(resultCode == 1) {
+                isDialog = false;
+                //테스트가 멈춘경우(다이얼로그 상태) 테스트 재시작
+                if(testPause){Test();testPause = false;}
+                else if(time == 0){checkAnswer();checked = true;}
+                else {resumeTimer();}
+            }
+        }
+        else if(requestCode == 1) {
+            if(resultCode == 0){goMain();}
+        }
     }
 
     public void setListener(){
@@ -162,31 +172,46 @@ public class One_TestActivity extends AppCompatActivity {
 
     public void submitAnswer(){
         timer.cancel();
-        time = 11;
+        time = 10;
         checked = true;
         checkAnswer();
     }
 
+    //시험보기
     public void Test(){
+        //액티비티가 종료되지 않았으면(홈화면으로 이동하지 않았으면)
         if(!isFinishing()){
+            //홈화면가기 창이 떠있지 않으면
             if(!isDialog) {
+                //제출 답안 초기화
                 submit = -1;
+                //현재 진행상황이 20보다 작으면(19문제 이하로 푼 상황이면)
                 if (progress < 20) {
+                    //랜덤한 20개 중에서 progress번째에 있는 구절을 문제로
                     nowQ = qList.get(progress);
+                    //문제출력
                     printQuestion();
-                    time = 11;
+                    //시간 10초
+                    time = 10;
+                    //밀리초
                     millis = time*10;
+                    //타임바 초기화
                     canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+                    //타이머 시작
                     setCountDown();
-                } else {
+                }
+                //현재 진행상황이 20(20문제 전부 푼 경우)
+                else {
                     showResultPopup();
                 }
             }
+            //창이 떠있다면 퍼즈
             else {testPause = true;}
         }
     }
 
     public void checkAnswer(){
+        progress++;
         if(submit == answer){
             System.out.println("submit:"+submit+"/answer:"+answer);
             Correct.setVisibility(View.VISIBLE);
@@ -227,39 +252,39 @@ public class One_TestActivity extends AppCompatActivity {
     public void setBtnGreen(int ans){
         switch (ans){
             case 1:
-                AnswerBtn01.setBackgroundColor(getResources().getColor(R.color.transparent_green)); break;
+                AnswerBtn01.setBackgroundColor(getResources().getColor(R.color.lightgreen)); break;
             case 2:
-                AnswerBtn02.setBackgroundColor(getResources().getColor(R.color.transparent_green)); break;
+                AnswerBtn02.setBackgroundColor(getResources().getColor(R.color.lightgreen)); break;
             case 3:
-                AnswerBtn03.setBackgroundColor(getResources().getColor(R.color.transparent_green)); break;
+                AnswerBtn03.setBackgroundColor(getResources().getColor(R.color.lightgreen)); break;
             case 4:
-                AnswerBtn04.setBackgroundColor(getResources().getColor(R.color.transparent_green)); break;
+                AnswerBtn04.setBackgroundColor(getResources().getColor(R.color.lightgreen)); break;
         }
     }
 
     public void setBtnPink(int ans){
         switch (ans){
             case 1:
-                AnswerBtn01.setBackgroundColor(getResources().getColor(R.color.transparent_pink)); break;
+                AnswerBtn01.setBackgroundColor(getResources().getColor(R.color.lightpink)); break;
             case 2:
-                AnswerBtn02.setBackgroundColor(getResources().getColor(R.color.transparent_pink)); break;
+                AnswerBtn02.setBackgroundColor(getResources().getColor(R.color.lightpink)); break;
             case 3:
-                AnswerBtn03.setBackgroundColor(getResources().getColor(R.color.transparent_pink)); break;
+                AnswerBtn03.setBackgroundColor(getResources().getColor(R.color.lightpink)); break;
             case 4:
-                AnswerBtn04.setBackgroundColor(getResources().getColor(R.color.transparent_pink)); break;
+                AnswerBtn04.setBackgroundColor(getResources().getColor(R.color.lightpink)); break;
         }
     }
 
     public void setBtnBeige(int ans){
         switch (ans){
             case 1:
-                AnswerBtn01.setBackgroundColor(getResources().getColor(R.color.transparent_beige)); break;
+                AnswerBtn01.setBackgroundResource(R.drawable.beige_button); break;
             case 2:
-                AnswerBtn02.setBackgroundColor(getResources().getColor(R.color.transparent_beige)); break;
+                AnswerBtn02.setBackgroundResource(R.drawable.beige_button); break;
             case 3:
-                AnswerBtn03.setBackgroundColor(getResources().getColor(R.color.transparent_beige)); break;
+                AnswerBtn03.setBackgroundResource(R.drawable.beige_button); break;
             case 4:
-                AnswerBtn04.setBackgroundColor(getResources().getColor(R.color.transparent_beige)); break;
+                AnswerBtn04.setBackgroundResource(R.drawable.beige_button); break;
         }
     }
 
@@ -269,7 +294,7 @@ public class One_TestActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 millis--;
                 time = millis/10;
-                String timeTxt = Integer.toString(time);
+                String timeTxt = Integer.toString(time+1);
                 System.out.println("countDown");
                 TimeTxt.setText(timeTxt);
                 float angle = 360 - millis * ANGLE_PER_TIME;
@@ -278,6 +303,7 @@ public class One_TestActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 checkAnswer();
+                TimeTxt.setText("0");
                 checked = true;
                 canvas.drawArc(rectF, -90, 360, false, paint);
             }
@@ -328,113 +354,22 @@ public class One_TestActivity extends AppCompatActivity {
 
     public void showMainPopup(){
         timer.cancel();
-        //Inflater 생성
-        LayoutInflater inflater = getLayoutInflater();
-        //inflater로 팝업 레이아웃을 불러옴
-        View view = inflater.inflate(R.layout.activity_gomain_popup, null);
-
-        final Dialog dialog = new Dialog(this);
-        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                dialog.cancel();
-                isDialog = false;
-                if(testPause){Test();testPause = false;}
-                else if(time == 0){checkAnswer();checked = true;}
-                else {resumeTimer();}
-            }
-        });
-
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(view);
-
-        WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
-        params.width=1000;
-        params.height=600;
-        dialog.getWindow().setAttributes(params);
         isDialog = true;
+        Intent intent = new Intent(this, GoMainPopupActivity.class);
+        intent.putExtra("progress",progress);
+        intent.putExtra("questionNum",20);
+        startActivityForResult(intent, 0);
 
-        //view안의 요소들과 연결
-        final Button cancelBtn = (Button)view.findViewById(R.id.cancelBtn);
-        final Button goMainBtn = (Button)view.findViewById(R.id.goMainBtn);
-        final TextView noticeTxt = (TextView)view.findViewById(R.id.notice);
-
-        int remain = 20-progress+1;
-        noticeTxt.setText(progress-1+"문제를 풀었고, "+remain+"문제 남았어요!");
-
-        cancelBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
-        });
-
-        goMainBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                goMain();
-                dialog.cancel();
-            }
-        });
-
-        //팝업창 띄우기
-        dialog.show();
-    }
-
-    public String setMessage(){
-        String message="";
-        if(correctNum<11){message = "더 공부해요:)"; }
-        else if(correctNum<16){message = "잘했어요!";}
-        else if(correctNum<20){message = "대단하네요♥";}
-        else{message = "경★축"+"\n"+"만 점";}
-
-        return message;
     }
 
     public void showResultPopup(){
-        //Inflater 생성
-        LayoutInflater inflater = getLayoutInflater();
-        //inflater로 팝업 레이아웃을 불러옴
-        View view = inflater.inflate(R.layout.activity_result_popup, null);
-
-        final Dialog dialog = new Dialog(this);
-        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                goMain();
-                dialog.cancel();
-            }
-        });
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(view);
-
-        WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
-        params.width=700;
-        params.height=600;
-        dialog.getWindow().setAttributes(params);
-
-        //view안의 요소들과 연결
-        final ImageButton exitBtn = (ImageButton)view.findViewById(R.id.exitBtn);
-        final TextView resultTxt = (TextView)view.findViewById(R.id.resultTxt);
-        final TextView messageTxt = (TextView)view.findViewById(R.id.messageTxt);
-
-        resultTxt.setText(correctNum+"/20");
-        String message = setMessage();
-        messageTxt.setText(message);
-
-        exitBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
-        });
-
-        //팝업창 띄우기
-        dialog.show();
+        Intent intent = new Intent(this, ResultPopupActivity.class);
+        intent.putExtra("correctNum",correctNum);
+        intent.putExtra("questionNum",20);
+        startActivityForResult(intent, 1);
     }
     
     public void printQuestion(){
-        progress++;
         //화면에 출력할 텍스트
         String printTxt = "";
         //개행을 추가하며 텍스트 만들기
@@ -447,7 +382,7 @@ public class One_TestActivity extends AppCompatActivity {
 
         //텍스트 출력
         PhraseTxt.setText(printTxt);
-        QuestionTxt.setText("Q. "+progress+"/20");
+        QuestionTxt.setText("Q. "+String.format("%02d", progress+1)+"/20");
         //텍스트가 길면 18dp, 짧으면 25dp로 설정
         if(is_long[nowQ]){PhraseTxt.setTextSize(TypedValue.COMPLEX_UNIT_DIP,18);}
         else{PhraseTxt.setTextSize(TypedValue.COMPLEX_UNIT_DIP,25);}
@@ -456,22 +391,28 @@ public class One_TestActivity extends AppCompatActivity {
     }
     
     public void printButton(){
+        //1~4중에 정답 번호 랜덤 선택
         answer = (int)(Math.random()* 4)+1;
+        //확인용
         System.out.println("Phrase Num"+nowQ);
         System.out.println("Answer"+answer+"Button");
-
+        //현재 문제(nowQ)를 제외한 나머지 중에서 3개 랜덤 선택
         ArrayList<Integer> temp = randomExcept(nowQ, 3);
+        //정답 번호 순서에 nowQ삽입
         temp.add(answer-1,nowQ);
         int n = 0;
-
+        //버튼 출력 4번 반복
         for(int i = 0; i<4;i++){
+            //버튼 번호
             int btnNum = i+1;
+            //btnNum번째 버튼에 btnNum)장절 출력
             setBtnTxt(btnNum, btnNum+ ")  "+verse.get(temp.get(n)));
             n++;
         }
 
     }
 
+    //n번째 버튼에 해당 텍스트 출력
     public void setBtnTxt(int n, String txt){
         switch (n) {
             case 1:
@@ -485,6 +426,7 @@ public class One_TestActivity extends AppCompatActivity {
         }
     }
 
+    //선지 생성용. num을 제외한 20개 중에 max개 선택
     public ArrayList<Integer> randomExcept(int num, int max){
         ArrayList<Integer> temp = new ArrayList<>();
         numList.remove(num);
@@ -493,6 +435,7 @@ public class One_TestActivity extends AppCompatActivity {
         return temp;
     }
 
+    //최대 max개의 정수 선택
     public ArrayList<Integer> randomNum(int max){
         ArrayList<Integer> temp = new ArrayList<>();
         while(temp.size() <max)
@@ -509,11 +452,9 @@ public class One_TestActivity extends AppCompatActivity {
     
     public void goMain(){
         Intent intent = new Intent(One_TestActivity.this,MainActivity.class);
-        intent.putExtra("bibleMap",bibleMap);
-        intent.putExtra("verse",verse);
-        intent.putExtra("is_long",is_long);
-        intent.putExtra("complete",complete);
-        intent.putExtra("jumpCheck",jumpCheck);
+        //화면전환시 bibleMap과 verse를 Data를 함께 전달
+        intent.putExtra("data", (Serializable) data);
+        intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
         finish();
     }

@@ -1,4 +1,4 @@
-package com.example.fhl;
+package com.YJuu.fhl;
 
 import org.junit.Test;
 

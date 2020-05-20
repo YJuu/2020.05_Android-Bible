@@ -1,29 +1,26 @@
-package com.example.fhl;
+package com.YJuu.fhl;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//import io.reactivex.disposables.CompositeDisposable;
 
 public class MainActivity extends AppCompatActivity {
+    private BibleData data = new BibleData();
     private HashMap<String, ArrayList<String>> bibleMap = new HashMap<>();
     private ArrayList<String> verse = new ArrayList<>();
     private boolean[] is_long = new boolean[20];
@@ -35,9 +32,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView VerseTxt;
     private Button ViewBtn;
     private Button TestBtn;
-
+    private ImageButton ShareBtn;
+    private ImageButton HelpBtn;
+    private ImageButton ContactBtn;
     private long time = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,19 +47,35 @@ public class MainActivity extends AppCompatActivity {
         VerseTxt = (TextView)findViewById(R.id.verse);
         ViewBtn = (Button)findViewById(R.id.viewbtn);
         TestBtn = (Button)findViewById(R.id.testbtn);
+        ShareBtn = (ImageButton)findViewById(R.id.shareBtn);
+        HelpBtn = (ImageButton)findViewById(R.id.helpBtn);
+        ContactBtn = (ImageButton)findViewById(R.id.contactBtn);
 
         //화면전환시 전달된 Data를 저장
         Intent intent = getIntent();
-        bibleMap = (HashMap<String, ArrayList<String>>) intent.getExtras().getSerializable("bibleMap");
-        verse = intent.getExtras().getStringArrayList("verse");
-        is_long = intent.getBooleanArrayExtra("is_long");
-        complete = intent.getBooleanArrayExtra("complete");
-        jumpCheck = intent.getBooleanExtra("jumpCheck",true);
+        data = (BibleData) intent.getSerializableExtra("data");
+        bibleMap = data.getBibleMap();
+        verse = data.getVerse();
+        is_long = data.getIs_long();
 
         //Dday표시하는 함수
         updateDday(calculate_Dday());
         //랜덤한 구절을 표시하는 함수
         printRandomPhrase();
+
+        ShareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSharePopup(v);
+            }
+        });
+
+        ContactBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showContactPopup(v);
+            }
+        });
 
         //View버튼을 클릭하면 ViewActivity로 전환
         ViewBtn.setOnClickListener(new View.OnClickListener() {
@@ -71,11 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 //현재 화면과 전환할 화면 설정
                 Intent intent = new Intent(MainActivity.this,ViewActivity.class);
                 //화면전환시 bibleMap과 verse를 Data를 함께 전달
-                intent.putExtra("bibleMap",bibleMap);
-                intent.putExtra("verse",verse);
-                intent.putExtra("is_long",is_long);
-                intent.putExtra("complete",complete);
-                intent.putExtra("jumpCheck",jumpCheck);
+                intent.putExtra("data", (Serializable) data);
                 //화면전환
                 startActivity(intent);
                 finish();
@@ -91,94 +101,57 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //팝업을 띄우는 함수
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent i) {
+        Intent intent;
+        if(requestCode == 1)
+        {
+            switch (resultCode) {
+                case 0:
+                    break;
+                case 1:
+                    intent = new Intent(MainActivity.this, One_TestActivity.class);
+                    //화면전환시 bibleMap과 verse를 Data를 함께 전달
+                    intent.putExtra("data", (Serializable) data);
+                    startActivity(intent);
+                    finish();
+                    break;
+                case 2:
+                    intent = new Intent(MainActivity.this, Two_TestActivity.class);
+                    //화면전환시 bibleMap과 verse를 Data를 함께 전달
+                    intent.putExtra("data", (Serializable) data);
+                    startActivity(intent);
+                    finish();
+                    break;
+                case 3:
+                    intent = new Intent(MainActivity.this, Three_TestActivity.class);
+                    //화면전환시 bibleMap과 verse를 Data를 함께 전달
+                    intent.putExtra("data", (Serializable) data);
+                    startActivity(intent);
+                    finish();
+                    break;
+
+            }
+        }
+
+    }
+
+    //다운로드 팝업을 띄우는 함수
+    private void showSharePopup(View v){
+        Intent intent = new Intent(MainActivity.this, SharePopupActivity.class);
+        startActivity(intent);
+    }
+
+    //연결 팝업을 띄우는 함수
+    private void showContactPopup(View v){
+        Intent intent = new Intent(MainActivity.this, ContactPopupActivity.class);
+        startActivity(intent);
+    }
+
+    //시험 난이도 팝업을 띄우는 함수
     private void showTestPopup(){
-        //dialog를 생성하는 builder
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        //Inflater 생성
-        LayoutInflater inflater = getLayoutInflater();
-        //inflater로 팝업 레이아웃을 불러옴
-        View view = inflater.inflate(R.layout.activity_test_popup, null);
-        //view와 builder연결
-        builder.setView(view);
-
-        //view안의 요소들과 연결
-        final RadioGroup starRadio = (RadioGroup)view.findViewById(R.id.starRadio);
-        final RadioButton one_star = (RadioButton)view.findViewById(R.id.one_star);
-        final RadioButton two_star = (RadioButton)view.findViewById(R.id.two_star);
-        final RadioButton three_star = (RadioButton)view.findViewById(R.id.three_star);
-        final Button startBtn = (Button)view.findViewById(R.id.startBtn);
-        final ImageButton exitBtn = (ImageButton)view.findViewById(R.id.exitBtn);
-
-        //dialog생성
-        final AlertDialog dialog = builder.create();
-        //뒤로가기로 창 끄기 가능
-        builder.setCancelable(true);
-
-        //start버튼을 누르면 라디오 버튼의 정보를 받아서 TestActivity실행
-        startBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //라디오버튼에서 선택된 버튼의 id반환
-                int id = starRadio.getCheckedRadioButtonId();
-                //선택된 버튼이 one_star일때 One_TestActivity로 전환
-                if(id == one_star.getId()){
-                    //현재 화면과 전환할 화면 설정
-                    Intent intent = new Intent(MainActivity.this,One_TestActivity.class);
-                    //화면전환시 bibleMap과 verse를 Data를 함께 전달
-                    intent.putExtra("bibleMap",bibleMap);
-                    intent.putExtra("verse",verse);
-                    intent.putExtra("is_long",is_long);
-                    intent.putExtra("complete",complete);
-                    intent.putExtra("jumpCheck",jumpCheck);
-                    //화면전환
-                    startActivity(intent);
-                    dialog.cancel();
-                    finish();
-                }
-                //선택된 버튼이 two_star일때 Two_TestActivity로 전환
-                else if(id == two_star.getId()){
-                    //현재 화면과 전환할 화면 설정
-                    Intent intent = new Intent(MainActivity.this,Two_TestActivity.class);
-                    //화면전환시 bibleMap과 verse를 Data를 함께 전달
-                    intent.putExtra("bibleMap",bibleMap);
-                    intent.putExtra("verse",verse);
-                    intent.putExtra("is_long",is_long);
-                    intent.putExtra("complete",complete);
-                    intent.putExtra("jumpCheck",jumpCheck);
-                    //화면전환
-                    startActivity(intent);
-                    dialog.cancel();
-                    finish();
-                }
-                //선택된 버튼이 three_star일때 Three_TestActivity로 전환
-                else if(id == three_star.getId()){
-                    //현재 화면과 전환할 화면 설정
-                    Intent intent = new Intent(MainActivity.this,Three_TestActivity.class);
-                    //화면전환시 bibleMap과 verse를 Data를 함께 전달
-                    intent.putExtra("bibleMap",bibleMap);
-                    intent.putExtra("verse",verse);
-                    intent.putExtra("is_long",is_long);
-                    intent.putExtra("complete",complete);
-                    intent.putExtra("jumpCheck",jumpCheck);
-                    //화면전환
-                    startActivity(intent);
-                    dialog.cancel();
-                    finish();
-                }
-            }
-        });
-
-        //exit버튼을 누르면 팝업 종료
-        exitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
-        });
-
-        //팝업창 띄우기
-        dialog.show();
+        Intent intent = new Intent(this, TestPopupActivity.class);
+        startActivityForResult(intent, 1);
     }
 
     public void setDB(){
@@ -193,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
             String com = boolToString(complete[i]);
             mDbOpenHelper.update_bible(verse.get(i), com);
         }
-
         mDbOpenHelper.close();
     }
 
@@ -249,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
         Calendar dCalendar = Calendar.getInstance();
 
         //Dday날짜 지정
-        dCalendar.set(2020,Calendar.APRIL,12);
+        dCalendar.set(2020,Calendar.JUNE,7);
 
         //남은 일 수를 구함
         today = calendar.getTimeInMillis()/(24*60*60*1000);
