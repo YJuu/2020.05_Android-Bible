@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.fhl">
+    package="com.YJuu.fhl">
+    <!-- 인터넷 사용권한 -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".GlobalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_thelove"
         android:label="@string/app_name_new"
         android:roundIcon="@mipmap/ic_launcher_thelove_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".VerseMenuPopupActivity"
+            android:theme="@style/Theme.DoNotDim"/>
+        <activity
+            android:name=".ContactPopupActivity"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
+        <activity
+            android:name=".GoMainPopupActivity"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
+        <activity
+            android:name=".TestPopupActivity"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
+        <activity
+            android:name=".ResultPopupActivity"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
+        <activity
+            android:name=".SharePopupActivity"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" /> <!-- 카카오톡 메타데이터 -->
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_key" />
+
         <activity android:name=".Three_TestActivity" />
         <activity android:name=".Two_TestActivity" />
         <activity android:name=".One_TestActivity" />
