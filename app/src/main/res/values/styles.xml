@@ -4,9 +4,24 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/beige</item>
+        <item name="colorAccent">@color/yellow</item>
         <item name="actionMenuTextColor">@color/darkbrown</item>
+    </style>
+
+
+    <style name="Theme.DoNotDim" parent="@android:style/Theme.Holo.Dialog.NoActionBar">
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:colorAccent">@color/yellow</item>
+        <item name="android:colorControlNormal">@color/transparent_yellow</item>
+        <item name="android:textCursorDrawable">@drawable/cursor_orange</item>
+        <item name="android:textColor">@color/darkbrown</item>
+        <item name="android:textColorHighlight">@color/transparent_yellow</item>
+        <item name="android:fontFamily">@font/batangregular</item>
+        <item name="android:background">@color/transparent</item>
     </style>
 
 </resources>

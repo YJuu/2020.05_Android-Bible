@@ -102,9 +102,9 @@
         android:textSize="30dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="40dp"
         android:layout_marginStart="24dp"
-        app:layout_constraintBottom_toTopOf="@id/phrase"
+        app:layout_constraintTop_toBottomOf="@id/backBtn"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
@@ -122,9 +122,8 @@
         android:ems="20"
         app:layout_constraintStart_toStartOf ="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.35"
+        app:layout_constraintTop_toBottomOf="@id/question"
+        app:layout_constraintBottom_toTopOf="@id/a01"
         />
 
     <Button
@@ -132,7 +131,7 @@
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@color/transparent_beige"
+        android:background="@drawable/beige_button"
         android:fontFamily="@font/batangregular"
         android:lineSpacingExtra="15dp"
         android:paddingStart="36dp"
@@ -143,16 +142,17 @@
         android:textAlignment="textStart"
         android:textColor="@color/darkbrown"
         android:textSize="25dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/phrase" />
+        app:layout_constraintBottom_toTopOf="@id/a02" />
 
     <Button
         android:id="@+id/a02"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:background="@color/transparent_beige"
+        android:background="@drawable/beige_button"
         android:text="2)  고린도후서 5:17"
         android:textColor="@color/darkbrown"
         android:textSize="25dp"
@@ -163,16 +163,16 @@
         android:paddingEnd="36dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/a01"/>
+        app:layout_constraintBottom_toTopOf="@id/a03"/>
 
     <Button
         android:id="@+id/a03"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:background="@color/transparent_beige"
+        android:background="@drawable/beige_button"
         android:text="3)  고린도후서 5:17"
         android:textColor="@color/darkbrown"
         android:textSize="25dp"
@@ -183,16 +183,16 @@
         android:paddingEnd="36dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintStart_toStartOf ="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/a02"/>
+        app:layout_constraintBottom_toTopOf="@id/a04"/>
 
     <Button
         android:id="@+id/a04"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:background="@color/transparent_beige"
+        android:background="@drawable/beige_button"
         android:text="4)  고린도후서 5:17"
         android:textColor="@color/darkbrown"
         android:textSize="25dp"
@@ -203,10 +203,10 @@
         android:paddingEnd="36dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintStart_toStartOf ="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/a03"/>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ImageView
         android:id="@+id/correct"

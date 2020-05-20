@@ -24,6 +24,45 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.05" />
 
+    <ImageButton
+        android:id="@+id/shareBtn"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/ic_share_24px"
+        android:backgroundTint="@color/pink"
+        android:stateListAnimator="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd = "20dp"
+        />
+
+    <ImageButton
+        android:id="@+id/helpBtn"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/ic_help_24px"
+        android:backgroundTint="@color/pink"
+        android:stateListAnimator="@null"
+        app:layout_constraintEnd_toStartOf="@id/shareBtn"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd = "16dp"
+        />
+
+    <ImageButton
+        android:id="@+id/contactBtn"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/ic_emoji_people_24px"
+        android:backgroundTint="@color/pink"
+        android:stateListAnimator="@null"
+        app:layout_constraintEnd_toStartOf="@id/helpBtn"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd = "16dp"
+        />
+
     <TextView
         android:id="@+id/phrase"
         android:layout_width="wrap_content"
@@ -69,8 +108,7 @@
         android:textAlignment="center"
         android:textColor="@color/babybrown"
         android:textSize="35dp"
-        android:background="@color/transparent"
-        android:stateListAnimator="@null"
+        android:background="@drawable/transparent_button"
         app:layout_constraintStart_toStartOf="@id/phrase"
         app:layout_constraintEnd_toStartOf="@id/testbtn"
         app:layout_constraintTop_toTopOf="parent"
@@ -87,8 +125,7 @@
         android:textSize="35dp"
         android:fontFamily="@font/titlebold"
         android:textAlignment="center"
-        android:background="@color/transparent"
-        android:stateListAnimator="@null"
+        android:background="@drawable/transparent_button"
         app:layout_constraintStart_toEndOf="@id/viewbtn"
         app:layout_constraintEnd_toEndOf= "@id/phrase"
         app:layout_constraintTop_toTopOf="parent"

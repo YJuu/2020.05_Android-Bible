@@ -1,4 +1,4 @@
-package com.example.fhl;
+package com.YJuu.fhl;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -6,8 +6,6 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
-
-import java.security.KeyStore;
 
 public class MyViewPager extends ViewPager {
 

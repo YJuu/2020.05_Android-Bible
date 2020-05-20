@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/bg"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:background="@color/beige"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/popuptitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/titlebold"
+        android:text="다운로드 링크 공유하기"
+        android:textColor="@color/brown"
+        android:textSize="23dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bg"
+        app:layout_constraintBottom_toBottomOf="@id/bg" />
+
+    <Button
+        android:id="@+id/kakaoBtn"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/transparent_button"
+        android:drawableLeft="@drawable/kakaotalk_icon"
+        android:fontFamily="@font/batangregular"
+        android:text="카카오톡으로 공유"
+        android:textColor="@color/orange"
+        android:textSize="20dp"
+        android:paddingStart="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bg">
+    </Button>
+
+    <Button
+        android:id="@+id/linkBtn"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/transparent_button"
+        android:drawableLeft="@drawable/ic_link_48px"
+        android:drawableTint="@color/brown"
+        android:fontFamily="@font/batangregular"
+        android:text="링크로 공유"
+        android:textColor="@color/orange"
+        android:textSize="20dp"
+        android:paddingStart="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/kakaoBtn" />
+
+    <Button
+        android:id="@+id/cancelBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="CANCEL"
+        android:textSize="20dp"
+        android:fontFamily="@font/titlemedium"
+        android:textColor="@color/brown"
+        android:background="@drawable/beige_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linkBtn"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,22 +6,310 @@
     android:layout_height="match_parent"
     tools:context=".Two_TestActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2nd"
-        android:textSize="50dp"
+    <ImageButton
+        android:id="@+id/backBtn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?attr/actionModeCloseDrawable"
+        android:backgroundTint="@color/pink"
+        android:stateListAnimator="@null"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/one_star"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:text="★"
+        android:fontFamily="@font/titlebold"
+        android:textColor="@color/yellow"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/backBtn"/>
+
+    <TextView
+        android:id="@+id/two_star"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:text="★"
+        android:fontFamily="@font/titlebold"
+        android:textColor="@color/yellow"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/one_star"/>
+
+    <TextView
+        android:id="@+id/three_star"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:text="★"
+        android:fontFamily="@font/titlebold"
+        android:textColor="@color/gray_yellow"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/two_star"/>
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/timer"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/timeTxt"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:text="15"
+        android:fontFamily="@font/titlelight"
+        android:textColor="@color/pink"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="Q. 01/05"
+        android:fontFamily="@font/titlebold"
+        android:textColor="@color/orange"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintTop_toBottomOf="@id/backBtn"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/verseText"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="고린도후서 5:17"
+        android:fontFamily="@font/batangregular"
+        android:textColor="@color/brown"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@id/question"
+        app:layout_constraintStart_toEndOf="@id/question"/>
+
+    <TextView
+        android:id="@+id/order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="__ - __ - __ - __ - __ - __"
+        android:textColor="@color/darkbrown"
+        android:textSize="28dp"
+        android:fontFamily="@font/batangbold"
+        android:textAlignment="center"
+        android:lineSpacingExtra="15dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:ems="20"
+        app:layout_constraintStart_toStartOf ="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/question"
+        app:layout_constraintBottom_toTopOf="@id/answer"
+        />
+
+    <TextView
+        android:id="@+id/answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="__ - __ - __ - __ - __ - __"
+        android:textColor="@color/brown"
+        android:textSize="20dp"
+        android:fontFamily="@font/batangbold"
+        android:textAlignment="center"
+        android:lineSpacingExtra="15dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:ems="20"
+        app:layout_constraintStart_toStartOf ="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/order"
+        app:layout_constraintBottom_toTopOf="@id/a01"
+        />
+
+    <ImageButton
+        android:id="@+id/backspace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_backspace_24px"
+        android:backgroundTint="@color/babybrown"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/verseText"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/a01"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/beige_button"
+        android:text="1) 하나님의 아들을 믿는 믿음 안에서 사는 것이라"
+        android:textColor="@color/darkbrown"
+        android:textSize="18dp"
+        android:fontFamily="@font/batangregular"
+        android:textAlignment="textStart"
+        android:lineSpacingExtra="15dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf ="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/a02"/>
+
+    <Button
+        android:id="@+id/a02"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/beige_button"
+        android:text="2) 하나님의 아들을 믿는 믿음 안에서 사는 것이라"
+        android:textColor="@color/darkbrown"
+        android:textSize="18dp"
+        android:fontFamily="@font/batangregular"
+        android:textAlignment="textStart"
+        android:lineSpacingExtra="15dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf ="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/a03"/>
+
+    <Button
+        android:id="@+id/a03"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/beige_button"
+        android:text="3) 하나님의 아들을 믿는 믿음 안에서 사는 것이라"
+        android:textColor="@color/darkbrown"
+        android:textSize="18dp"
+        android:fontFamily="@font/batangregular"
+        android:textAlignment="textStart"
+        android:lineSpacingExtra="15dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf ="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/a04"/>
+
+    <Button
+        android:id="@+id/a04"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/beige_button"
+        android:text="4) 하나님의 아들을 믿는 믿음 안에서 사는 것이라"
+        android:textColor="@color/darkbrown"
+        android:textSize="18dp"
+        android:fontFamily="@font/batangregular"
+        android:textAlignment="textStart"
+        android:lineSpacingExtra="15dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf ="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/a05"/>
+
+    <Button
+        android:id="@+id/a05"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/beige_button"
+        android:text="5) 하나님의 아들을 믿는 믿음 안에서 사는 것이라"
+        android:textColor="@color/darkbrown"
+        android:textSize="18dp"
+        android:fontFamily="@font/batangregular"
+        android:textAlignment="textStart"
+        android:lineSpacingExtra="15dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf ="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/a06"/>
+
+    <Button
+        android:id="@+id/a06"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/beige_button"
+        android:text="6) 하나님의 아들을 믿는 믿음 안에서 사는 것이라"
+        android:textColor="@color/darkbrown"
+        android:textSize="18dp"
+        android:fontFamily="@font/batangregular"
+        android:textAlignment="textStart"
+        android:lineSpacingExtra="15dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_marginBottom="76dp"
+        app:layout_constraintStart_toStartOf ="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/correct"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="@id/question"
+        app:layout_constraintEnd_toEndOf="@+id/question"
+        app:layout_constraintTop_toTopOf="@id/question"
+        app:layout_constraintBottom_toBottomOf="@id/question"
+        app:srcCompat="@drawable/correct"/>
+
+    <ImageView
+        android:id="@+id/wrong"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintStart_toStartOf="@id/question"
+        app:layout_constraintEnd_toEndOf="@+id/question"
+        app:layout_constraintTop_toTopOf="@id/question"
+        app:layout_constraintBottom_toBottomOf="@id/question"
+        app:srcCompat="@drawable/wrong" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent">
+
+    <ScrollView
+        android:id="@+id/MenuScroll"
+        android:layout_width="170dp"
+        android:layout_height="400dp"
+        android:background="@color/white"
+        android:scrollbarSize="4dp"
+        android:scrollbarThumbVertical="@color/yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/v01"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="1. 고린도후서 5:17"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp"
+
+                />
+
+            <Button
+                android:id="@+id/v02"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="2. 갈라디아서 2:20"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v03"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="3. 로마서 12:1"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v04"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="4. 디모데후서 3:16"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v05"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="5. 빌립보서 4:6,7"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v06"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="6. 로마서 1:16"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v07"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="7. 이사야 53:6"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v08"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="8. 로마서 6:23"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v09"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="9. 로마서 5:8"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v10"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="10. 에베소서 2:8,9"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v11"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="11. 요한계시록 3:20"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v12"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="12. 요한복음 5:24"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v13"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="13. 이사야 41:10"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v14"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="14. 민수기 23:19"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v15"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="15. 로마서 8:32"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v16"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="16. 히브리서 2:18"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v17"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="17. 시편 119:9,11"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v18"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="18. 누가복음 9:23"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v19"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="19. 로마서 12:2"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/v20"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/batangbold"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="8dp"
+                android:stateListAnimator="@null"
+                android:text="20. 히브리서 12:3"
+                android:textAlignment="textStart"
+                android:textColor="@color/brown"
+                android:textSize="16dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
