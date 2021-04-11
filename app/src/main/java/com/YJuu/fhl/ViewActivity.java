@@ -1,5 +1,8 @@
 package com.YJuu.fhl;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -13,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -88,6 +92,7 @@ public class ViewActivity extends AppCompatActivity {
         complete = data.getComplete();
         jumpCheck = data.getJumpCheck();
         last = data.getLast();
+        now = last;
 
         if (jumpCheck) {
             JumpCheck.setChecked(true);
@@ -311,8 +316,6 @@ public class ViewActivity extends AppCompatActivity {
         int background_yellow = Color.parseColor("#FFE047");
         int background_transparent_yellow = Color.parseColor("#99FFE047");
         String pageTxt = "";
-
-        now = last;
 
         pageTxt = now + "/20";
         PageTxt.setText(pageTxt);

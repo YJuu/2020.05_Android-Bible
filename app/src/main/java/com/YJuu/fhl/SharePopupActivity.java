@@ -39,7 +39,7 @@ public class SharePopupActivity extends Activity {
             @Override
             public void onClick(View v) {
                 ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("다운로드 링크", "http://www.google.com");
+                ClipData clip = ClipData.newPlainText("다운로드 링크", "https://bit.ly/2TkjLos");
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(getApplicationContext(), "클립보드에 복사완료!", Toast.LENGTH_SHORT).show();
                 finish();

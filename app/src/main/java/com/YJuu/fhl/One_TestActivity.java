@@ -384,8 +384,8 @@ public class One_TestActivity extends AppCompatActivity {
         PhraseTxt.setText(printTxt);
         QuestionTxt.setText("Q. "+String.format("%02d", progress+1)+"/20");
         //텍스트가 길면 18dp, 짧으면 25dp로 설정
-        if(is_long[nowQ]){PhraseTxt.setTextSize(TypedValue.COMPLEX_UNIT_DIP,18);}
-        else{PhraseTxt.setTextSize(TypedValue.COMPLEX_UNIT_DIP,25);}
+        if(is_long[nowQ]){PhraseTxt.setTextSize(TypedValue.COMPLEX_UNIT_DIP,17);}
+        else{PhraseTxt.setTextSize(TypedValue.COMPLEX_UNIT_DIP,20);}
 
         printButton();
     }

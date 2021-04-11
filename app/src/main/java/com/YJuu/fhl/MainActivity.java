@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -66,10 +69,12 @@ public class MainActivity extends AppCompatActivity {
         //랜덤한 구절을 표시하는 함수
         printRandomPhrase();
 
+
+        //말씀부분 터치시 말씀보기 화면으로 전환
         PhraseTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                last = r;
+                last = r +1;
                 data.setLast(last);
                 //현재 화면과 전환할 화면 설정
                 Intent intent = new Intent(MainActivity.this,ViewActivity.class);
@@ -81,17 +86,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        PhraseTxt.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                copyPhrase(r);
+                return true;
+            }
+        });
+
         ShareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showSharePopup(v);
+                showSharePopup();
             }
         });
 
         ContactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showContactPopup(v);
+                showContactPopup();
+            }
+        });
+
+        HelpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showHelpPopup();
             }
         });
 
@@ -117,6 +137,24 @@ public class MainActivity extends AppCompatActivity {
                 showTestPopup();
             }
         });
+    }
+
+    public void copyPhrase(int num){
+        String copyPhrase = "";
+        String copyVerse = "";
+        String copyTxt = "";
+        for(int i=0;i<bibleMap.get(verse.get(num)).size();i++){
+            if(bibleMap.get(verse.get(num)).get(i) != null) {
+                copyPhrase += bibleMap.get(verse.get(num)).get(i).replace("\"", "") + " " ;
+            }
+        }
+        copyVerse = verse.get(num);
+        copyTxt = String.format("[ %s ] %s",copyVerse, copyPhrase);
+
+        ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("말씀", copyTxt);
+        clipboard.setPrimaryClip(clip);
+        Toast.makeText(getApplicationContext(), "클립보드에 복사완료!", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -154,14 +192,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //도움말 팝업을 띄우는 함수
+    private void showHelpPopup(){
+        Intent intent = new Intent(MainActivity.this, HelpPopupActivity.class);
+        startActivity(intent);
+    }
+
     //다운로드 팝업을 띄우는 함수
-    private void showSharePopup(View v){
+    private void showSharePopup(){
         Intent intent = new Intent(MainActivity.this, SharePopupActivity.class);
         startActivity(intent);
     }
 
     //연결 팝업을 띄우는 함수
-    private void showContactPopup(View v){
+    private void showContactPopup(){
         Intent intent = new Intent(MainActivity.this, ContactPopupActivity.class);
         startActivity(intent);
     }
@@ -213,7 +257,6 @@ public class MainActivity extends AppCompatActivity {
         //1~20랜덤 선택
         r = (int)(Math.random()* 20);
         //개행을 추가하며 텍스트 만들기
-
         for(int i=0;i<bibleMap.get(verse.get(r)).size();i++){
             if(bibleMap.get(verse.get(r)).get(i) != null) {
                 printTxt += bibleMap.get(verse.get(r)).get(i) + "\n";
@@ -224,8 +267,9 @@ public class MainActivity extends AppCompatActivity {
         PhraseTxt.setText(printTxt);
         VerseTxt.setText(verse.get(r));
         //텍스트가 길면 18dp, 짧으면 25dp로 설정
-        if(is_long[r]){PhraseTxt.setTextSize(TypedValue.COMPLEX_UNIT_DIP,18);}
-        else{PhraseTxt.setTextSize(TypedValue.COMPLEX_UNIT_DIP,25);}
+        if(is_long[r]){PhraseTxt.setTextSize(TypedValue.COMPLEX_UNIT_DIP,17);}
+        else{PhraseTxt.setTextSize(TypedValue.COMPLEX_UNIT_DIP,22);}
+        float size= PhraseTxt.getTextSize();
     }
 
     //Dday계산

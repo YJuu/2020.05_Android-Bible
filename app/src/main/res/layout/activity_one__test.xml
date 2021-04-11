@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".One_TestActivity">
 
     <ImageButton
@@ -13,11 +14,12 @@
         android:background="?attr/actionModeCloseDrawable"
         android:backgroundTint="@color/pink"
         android:stateListAnimator="@null"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.01"
+        app:layout_constraintHorizontal_bias="0.02"/>
 
     <TextView
         android:id="@+id/one_star"
@@ -29,11 +31,10 @@
         android:textSize="40dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/backBtn"/>
+        app:layout_constraintStart_toEndOf="@id/backBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/backBtn"
+        app:layout_constraintHorizontal_bias="0.02"/>
 
     <TextView
         android:id="@+id/two_star"
@@ -45,11 +46,9 @@
         android:textSize="40dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="40dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/one_star"/>
+        android:layout_marginStart="36dp"
+        app:layout_constraintStart_toStartOf="@id/one_star"
+        app:layout_constraintTop_toTopOf="@id/backBtn"/>
 
     <TextView
         android:id="@+id/three_star"
@@ -61,20 +60,20 @@
         android:textSize="40dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="40dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/two_star"/>
+        android:layout_marginStart="36dp"
+        app:layout_constraintStart_toStartOf="@id/two_star"
+        app:layout_constraintTop_toTopOf="@id/backBtn"/>
 
     <ImageView
         android:id="@+id/timer"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintHorizontal_bias="0.96" />
 
     <TextView
         android:id="@+id/timeTxt"
@@ -86,26 +85,30 @@
         android:textSize="20dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintHorizontal_bias="0.96"/>
 
 
     <TextView
         android:id="@+id/question"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_height="40dp"
         android:text="Q. 01/20"
         android:fontFamily="@font/titlebold"
         android:textColor="@color/orange"
         android:textSize="30dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="24dp"
-        app:layout_constraintTop_toBottomOf="@id/backBtn"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.1"/>
 
     <TextView
         android:id="@+id/phrase"
@@ -116,9 +119,7 @@
         android:textSize="25dp"
         android:fontFamily="@font/batangbold"
         android:textAlignment="center"
-        android:lineSpacingExtra="15dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
+        android:lineSpacingExtra="10dp"
         android:ems="20"
         app:layout_constraintStart_toStartOf ="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,9 +136,9 @@
         android:fontFamily="@font/batangregular"
         android:lineSpacingExtra="15dp"
         android:paddingStart="36dp"
-        android:paddingTop="8dp"
+        android:paddingTop="4dp"
         android:paddingEnd="36dp"
-        android:paddingBottom="8dp"
+        android:paddingBottom="4dp"
         android:text="1)  고린도후서 5:17"
         android:textAlignment="textStart"
         android:textColor="@color/darkbrown"
@@ -161,8 +162,8 @@
         android:lineSpacingExtra="15dp"
         android:paddingStart="36dp"
         android:paddingEnd="36dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="5dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -181,8 +182,8 @@
         android:lineSpacingExtra="15dp"
         android:paddingStart="36dp"
         android:paddingEnd="36dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintStart_toStartOf ="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -201,12 +202,13 @@
         android:lineSpacingExtra="15dp"
         android:paddingStart="36dp"
         android:paddingEnd="36dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:layout_marginBottom="100dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
         app:layout_constraintStart_toStartOf ="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.88"/>
 
     <ImageView
         android:id="@+id/correct"
@@ -222,7 +224,7 @@
         android:id="@+id/wrong"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintStart_toStartOf="@id/question"
         app:layout_constraintEnd_toEndOf="@+id/question"
         app:layout_constraintTop_toTopOf="@id/question"

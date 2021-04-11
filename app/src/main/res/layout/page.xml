@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:sl="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/phraseText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ems="20"
+        android:fontFamily="@font/batangbold"
+        android:lineSpacingExtra="15dp"
         android:text="&quot;그런즉 누구든지\n그리스도 안에 있으면\n새로운 피조물이라\n이전 것은 지나갔으니\n보라 새것이 되었도다&quot;"
+        android:textAlignment="center"
         android:textColor="@color/darkbrown"
         android:textSize="30dp"
-        android:fontFamily="@font/batangbold"
         android:textStyle="bold"
-        android:textAlignment="center"
-        android:lineSpacingExtra="15dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:ems="20"
-        app:layout_constraintStart_toStartOf ="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/verseText"
@@ -35,11 +34,11 @@
         android:text="고린도후서 5:17"
         android:textAlignment="center"
         android:textColor="@color/brown"
-        android:textSize="25dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="@id/phraseText"
-        app:layout_constraintEnd_toEndOf="@id/phraseText"
-        app:layout_constraintTop_toBottomOf="@id/phraseText"
-        />
-
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@id/phraseText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

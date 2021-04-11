@@ -432,9 +432,9 @@ public class Two_TestActivity extends AppCompatActivity {
         //글자크기 설정
         int textSize = 18;
         if (is_long[nowQ]) {
-            textSize = 18;
+            textSize = 16;
         } else {
-            textSize = 22;
+            textSize = 20;
         }
 
         //버튼 출력
@@ -564,9 +564,9 @@ public class Two_TestActivity extends AppCompatActivity {
         //글자크기 설정
         int textSize = 18;
         if (is_long[nowQ]) {
-            textSize = 18;
+            textSize = 16;
         } else {
-            textSize = 22;
+            textSize = 20;
         }
 
         for (int i = 1; i < aList.size() + 1; i++) {
