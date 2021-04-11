@@ -37,4 +37,8 @@ dependencies {
     // 카카오링크
     implementation group: 'com.kakao.sdk', name: 'kakaolink', version: '1.27.0'
     implementation 'com.google.android.material:material:1.0.0'
+    //scalelayout라이브러리
+    implementation 'com.ssomai:android.scalablelayout:2.1.6'
+    //뷰페이져 줌 라이브러리
+    implementation 'com.github.MikeOrtiz:TouchImageView:3.0.1' // Android X
 }

@@ -3,6 +3,7 @@ package com.YJuu.fhl;
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.kakao.kakaolink.v2.KakaoLinkResponse;
 import com.kakao.kakaolink.v2.KakaoLinkService;
@@ -23,6 +24,7 @@ import java.util.Map;
 public class KakaoLink {
 
     public void downloadLink(Context context) {
+        final Context mContext = context;
 
         // 템플릿 ID
         String templateId = "25241";

@@ -212,6 +212,7 @@ public class Three_TestActivity extends AppCompatActivity {
         ArrayList<Boolean> corrects = new ArrayList<>();
         corrects.clear();
         boolean correct = false;
+        progress++;
 
         //EditText를 확인하여 각 라인의 정답여부 확인
         for(int i = 1;i<8;i++){
@@ -387,7 +388,6 @@ public class Three_TestActivity extends AppCompatActivity {
 
     //문제 출력
     public void printQuestion(){
-        progress++;
         //(현재 문제 장절의 라인 수 + 구절 부분 1)를 얻어와서 반을 빈칸으로
         int lineNum = 0;
 
@@ -413,7 +413,7 @@ public class Three_TestActivity extends AppCompatActivity {
 
         Log.d("bList",bList.toString());
         //말씀이 길면 18dp, 짧으면 24dp로 글자크기 설정
-        if(is_long[nowQ]){ textSize = 18;} else { textSize = 24;}
+        if(is_long[nowQ]){ textSize = 16;} else { textSize = 22;}
 
         lines.clear();
         lines.add("");
@@ -446,7 +446,7 @@ public class Three_TestActivity extends AppCompatActivity {
         }
         setdarkbrown();
         //문제 번호 출력
-        QuestionTxt.setText("Q. "+String.format("%02d", progress)+"/05");
+        QuestionTxt.setText("Q. "+String.format("%02d", progress+1)+"/05");
     }
 
     //lineNum번째 줄에 print여부에 따라 text를 txtSize로 출력

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Two_TestActivity">
 
     <ImageButton
@@ -13,11 +14,12 @@
         android:background="?attr/actionModeCloseDrawable"
         android:backgroundTint="@color/pink"
         android:stateListAnimator="@null"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.01"
+        app:layout_constraintHorizontal_bias="0.02"/>
 
     <TextView
         android:id="@+id/one_star"
@@ -29,11 +31,10 @@
         android:textSize="40dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/backBtn"/>
+        app:layout_constraintStart_toEndOf="@id/backBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/backBtn"
+        app:layout_constraintHorizontal_bias="0.02"/>
 
     <TextView
         android:id="@+id/two_star"
@@ -45,11 +46,9 @@
         android:textSize="40dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="40dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/one_star"/>
+        android:layout_marginStart="36dp"
+        app:layout_constraintStart_toStartOf="@id/one_star"
+        app:layout_constraintTop_toTopOf="@id/backBtn"/>
 
     <TextView
         android:id="@+id/three_star"
@@ -61,20 +60,20 @@
         android:textSize="40dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="40dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/two_star"/>
+        android:layout_marginStart="36dp"
+        app:layout_constraintStart_toStartOf="@id/two_star"
+        app:layout_constraintTop_toTopOf="@id/backBtn"/>
 
     <ImageView
         android:id="@+id/timer"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintHorizontal_bias="0.96" />
 
     <TextView
         android:id="@+id/timeTxt"
@@ -86,26 +85,31 @@
         android:textSize="20dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintHorizontal_bias="0.96"/>
 
 
     <TextView
         android:id="@+id/question"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:text="Q. 01/05"
+        android:layout_height="40dp"
+        android:text="Q. 01/20"
         android:fontFamily="@font/titlebold"
         android:textColor="@color/orange"
         android:textSize="30dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="24dp"
-        app:layout_constraintTop_toBottomOf="@id/backBtn"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.1"/>
+
 
     <TextView
         android:id="@+id/verseText"
@@ -115,11 +119,13 @@
         android:fontFamily="@font/batangregular"
         android:textColor="@color/brown"
         android:textSize="20dp"
-        android:gravity="center"
+        android:gravity="bottom"
         android:textAlignment="center"
-        android:layout_marginStart="24dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="@id/question"
-        app:layout_constraintStart_toEndOf="@id/question"/>
+        app:layout_constraintStart_toEndOf="@id/question"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"/>
 
     <TextView
         android:id="@+id/order"
@@ -127,7 +133,7 @@
         android:layout_height="wrap_content"
         android:text="__ - __ - __ - __ - __ - __"
         android:textColor="@color/darkbrown"
-        android:textSize="28dp"
+        android:textSize="26dp"
         android:fontFamily="@font/batangbold"
         android:textAlignment="center"
         android:lineSpacingExtra="15dp"
@@ -137,7 +143,8 @@
         app:layout_constraintStart_toStartOf ="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/question"
-        app:layout_constraintBottom_toTopOf="@id/answer"
+        app:layout_constraintBottom_toTopOf="@id/a01"
+        app:layout_constraintVertical_bias="0.3"
         />
 
     <TextView
@@ -157,6 +164,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/order"
         app:layout_constraintBottom_toTopOf="@id/a01"
+        app:layout_constraintVertical_bias="0.4"
         />
 
     <ImageButton
@@ -165,19 +173,20 @@
         android:layout_height="wrap_content"
         android:background="@drawable/ic_backspace_24px"
         android:backgroundTint="@color/babybrown"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="@id/verseText"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.96"
+        />
 
     <Button
         android:id="@+id/a01"
-        android:layout_width="380dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:background="@drawable/beige_button"
         android:text="1) 하나님의 아들을 믿는 믿음 안에서 사는 것이라"
         android:textColor="@color/darkbrown"
-        android:textSize="18dp"
+        android:textSize="16dp"
         android:fontFamily="@font/batangregular"
         android:textAlignment="textStart"
         android:lineSpacingExtra="15dp"
@@ -192,12 +201,12 @@
 
     <Button
         android:id="@+id/a02"
-        android:layout_width="380dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:background="@drawable/beige_button"
         android:text="2) 하나님의 아들을 믿는 믿음 안에서 사는 것이라"
         android:textColor="@color/darkbrown"
-        android:textSize="18dp"
+        android:textSize="16dp"
         android:fontFamily="@font/batangregular"
         android:textAlignment="textStart"
         android:lineSpacingExtra="15dp"
@@ -212,12 +221,12 @@
 
     <Button
         android:id="@+id/a03"
-        android:layout_width="380dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:background="@drawable/beige_button"
         android:text="3) 하나님의 아들을 믿는 믿음 안에서 사는 것이라"
         android:textColor="@color/darkbrown"
-        android:textSize="18dp"
+        android:textSize="16dp"
         android:fontFamily="@font/batangregular"
         android:textAlignment="textStart"
         android:lineSpacingExtra="15dp"
@@ -232,12 +241,12 @@
 
     <Button
         android:id="@+id/a04"
-        android:layout_width="380dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:background="@drawable/beige_button"
         android:text="4) 하나님의 아들을 믿는 믿음 안에서 사는 것이라"
         android:textColor="@color/darkbrown"
-        android:textSize="18dp"
+        android:textSize="16dp"
         android:fontFamily="@font/batangregular"
         android:textAlignment="textStart"
         android:lineSpacingExtra="15dp"
@@ -252,12 +261,12 @@
 
     <Button
         android:id="@+id/a05"
-        android:layout_width="380dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:background="@drawable/beige_button"
         android:text="5) 하나님의 아들을 믿는 믿음 안에서 사는 것이라"
         android:textColor="@color/darkbrown"
-        android:textSize="18dp"
+        android:textSize="16dp"
         android:fontFamily="@font/batangregular"
         android:textAlignment="textStart"
         android:lineSpacingExtra="15dp"
@@ -272,12 +281,12 @@
 
     <Button
         android:id="@+id/a06"
-        android:layout_width="380dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:background="@drawable/beige_button"
         android:text="6) 하나님의 아들을 믿는 믿음 안에서 사는 것이라"
         android:textColor="@color/darkbrown"
-        android:textSize="18dp"
+        android:textSize="16dp"
         android:fontFamily="@font/batangregular"
         android:textAlignment="textStart"
         android:lineSpacingExtra="15dp"
@@ -285,10 +294,11 @@
         android:paddingEnd="10dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:layout_marginBottom="76dp"
-        app:layout_constraintStart_toStartOf ="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.9"/>
 
     <ImageView
         android:id="@+id/correct"
@@ -304,7 +314,7 @@
         android:id="@+id/wrong"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintStart_toStartOf="@id/question"
         app:layout_constraintEnd_toEndOf="@+id/question"
         app:layout_constraintTop_toTopOf="@id/question"

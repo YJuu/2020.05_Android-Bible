@@ -13,33 +13,36 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".HelpPopupActivity"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"/>
+        <activity
             android:name=".VerseMenuPopupActivity"
             android:theme="@style/Theme.DoNotDim"/>
         <activity
             android:name=".ContactPopupActivity"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"/>
         <activity
             android:name=".GoMainPopupActivity"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"/>
         <activity
             android:name=".TestPopupActivity"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"/>
         <activity
             android:name=".ResultPopupActivity"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"/>
         <activity
             android:name=".SharePopupActivity"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" /> <!-- 카카오톡 메타데이터 -->
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"/> <!-- 카카오톡 메타데이터 -->
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
 
-        <activity android:name=".Three_TestActivity" />
-        <activity android:name=".Two_TestActivity" />
-        <activity android:name=".One_TestActivity" />
-        <activity android:name=".ViewActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".TitleActivity">
+        <activity android:name=".Three_TestActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Two_TestActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".One_TestActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ViewActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".TitleActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -19,6 +19,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static com.kakao.util.helper.Utility.getPackageInfo;
+
 //import static com.kakao.util.helper.Utility.getPackageInfo;
 
 public class TitleActivity extends AppCompatActivity {
@@ -37,7 +39,7 @@ public class TitleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //activity_title.xml과 연결
         setContentView(R.layout.activity_title);
-        //getKeyHash(TitleActivity.this);
+        getKeyHash(TitleActivity.this);
 
         //DB로부터 Data를 읽어와 bibleMap과 verse에 저장하는 함수 호출
         setData();
@@ -130,7 +132,6 @@ public class TitleActivity extends AppCompatActivity {
         }
     }
 
-    /*
     public static String getKeyHash(final Context context) {
         PackageInfo packageInfo = getPackageInfo(context, PackageManager.GET_SIGNATURES);
         if (packageInfo == null)
@@ -140,6 +141,9 @@ public class TitleActivity extends AppCompatActivity {
             try {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
+                String keyHash = new String(Base64.encode(md.digest(), 0));
+
+                Log.d("keyHash", keyHash);
                 return Base64.encodeToString(md.digest(), Base64.NO_WRAP);
             } catch (NoSuchAlgorithmException e) {
                 String TAG = "KeyHash";
@@ -148,6 +152,4 @@ public class TitleActivity extends AppCompatActivity {
         }
         return null;
     }
-
-     */
 }
